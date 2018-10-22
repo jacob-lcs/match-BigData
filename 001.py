@@ -30,7 +30,7 @@ def getReview(url):
 
     content = content.decode('utf-8')
     # print("获取到的网址为：", content)
-    pattern = re.compile('.*?<a ka="com1-review" href="(.*?)" class="weird" target="_blank">.*?</a>.*?<a ka="com1-salary".*?class="weird".*?>工资(.*?)</a>', re.S)
+    pattern = re.compile('.*?<a ka="com.*?-review" href="(.*?)" class="weird" target="_blank">.*?</a>.*?<a ka="com.*?-salary".*?class="weird".*?>工资(.*?)</a>', re.S)
     hrefs = re.findall(pattern, content)
     print("获取到的网址为：", hrefs)
     for href in hrefs:
