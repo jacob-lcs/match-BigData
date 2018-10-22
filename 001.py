@@ -11,6 +11,7 @@ import os
 import xlwt
 
 firms = []
+salary = ''
 
 os.chdir('C:\\Users\\Administrator\\Desktop')
 
@@ -29,17 +30,18 @@ def getReview(url):
 
     content = content.decode('utf-8')
     # print("获取到的网址为：", content)
-    pattern = re.compile('.*?<a ka="com.*?-review" href="(.*?)" class="weird" target="_blank">.*?</a>.*?', re.S)
+    pattern = re.compile('.*?<a ka="com1-review" href="(.*?)" class="weird" target="_blank">.*?</a>.*?<a ka="com1-salary".*?class="weird".*?>工资(.*?)</a>', re.S)
     hrefs = re.findall(pattern, content)
     print("获取到的网址为：", hrefs)
     for href in hrefs:
-        full_url = 'https://www.kanzhun.com' + href
+        full_url = 'https://www.kanzhun.com' + href[0]
         print("正在获取", full_url, "的数据...")
-        getData(full_url)
+        salary = href[1]
+        getData(full_url, salary)
         time.sleep(5 + random.random())
 
 
-def getData(url):
+def getData(url, salary):
     firm_review = []
 
     # proxy = {'http': 'http://114.230.41.78:808'}
@@ -88,7 +90,7 @@ def getData(url):
         print(firm_review)
         if (len(firm_review) == 15):
             firms.append(
-                [firm_review[0], firm_review[1], firm_review[2], firm_review[3], firm_review[4], firm_review[5],
+                [salary, firm_review[0], firm_review[1], firm_review[2], firm_review[3], firm_review[4], firm_review[5],
                  firm_review[6], firm_review[7], firm_review[8], firm_review[9], firm_review[10], firm_review[11],
                  firm_review[12], firm_review[13], firm_review[14]])
             print("保存成功！")
@@ -112,7 +114,7 @@ def excel_write(items):
     j = 1
     for item in items:
         for i in range(len(item)):
-            ws.write(j, int(i % 15), item[i])
+            ws.write(j, int(i % 16), item[i])
         j = j + 1
 
 
@@ -121,10 +123,10 @@ if __name__ == '__main__':
     newTable = '看准网.xls'  # 表格名称
     wb = xlwt.Workbook(encoding='utf-8')  # 创建excel文件，声明编码
     ws = wb.add_sheet('看准网')  # 创建表格
-    headData = ['公司', '点评数', '福利好', '待遇好', '待遇不错', '福利不错', '发展空间大', '机会多', '工资低', '加班', '压力大', '流动性大', '年轻', '满意',
+    headData = ['工资', '公司', '点评数', '福利好', '待遇好', '待遇不错', '福利不错', '发展空间大', '机会多', '工资低', '加班', '压力大', '流动性大', '年轻', '满意',
                 '不满意']  # 表头部信息
 
-    for colnum in range(0, 15):
+    for colnum in range(0, 16):
         ws.write(0, colnum, headData[colnum], xlwt.easyxf('font: bold on'))  # 行，列
 
     print("写入表头成功！")
