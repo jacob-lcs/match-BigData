@@ -79,8 +79,8 @@ if __name__ == "__main__":
          'RTMP', 'rtmp', 'RTSP', 'rtsp', 'WebRTC', 'webrtc', 'ffmpeg', 'FFMPEG', 'H264', 'h264', 'h.264', 'aac', 'AAC',
          'Android', 'iOS', 'OpenCV'],
         ['系统工程师',
-         'HP',
-         'IBM',
+         'HP', 'hp',
+         'IBM', 'ibm',
          'ERP',
          'Spring', 'spring',
          'J2EE',
@@ -94,12 +94,12 @@ if __name__ == "__main__":
          'c++', 'C++',
          'OA',
          'Unix', 'unix', 'UNIX',
-         'Socket',
+         'Socket', 'socket',
          'MCSE',
          'RHCE',
          'Nginx', 'nginx',
          'Tomcat', 'tomcat',
-         'Ansible',
+         'Ansible', 'ansible',
          'Spring', 'spring', 'SpringMVC', 'springmvc',
          'MES',
          'Redis', 'redis',
@@ -160,12 +160,12 @@ if __name__ == "__main__":
          '沟通'
          ],
         ['数据库工程师'
-            , 'Linux'
-            , 'SQL'
+            , 'Linux', 'linux'
+            , 'SQL', 'sql'
             , 'ELT'
-            , 'Hadoop'
-            , 'Scala'
-            , 'Redis'
+            , 'Hadoop', 'hadoop'
+            , 'Scala', 'scala'
+            , 'Redis', 'redis'
             , '设计'
             , '平台'
             , '数据仓库'

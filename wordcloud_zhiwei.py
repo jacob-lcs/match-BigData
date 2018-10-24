@@ -21,7 +21,7 @@ def read_excel(file_excel, infos, n, sheetnames):  # 读excel并将需要的数�
 
 
 if __name__ == "__main__":
-    wb = openpyxl.load_workbook('./data/前程无忧_职位.xlsx')
+    wb = openpyxl.load_workbook('./data/八个职位.xlsx')
     sheetnames = wb.sheetnames
     for ff in range(8):
         infos = []  # 新建空字典
